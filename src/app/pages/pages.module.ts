@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './pages-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -11,7 +11,8 @@ import { ResetPasswordComponent } from './forgot-password/reset-password.compone
   declarations: [LoginComponent, RegisterComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,
@@ -19,4 +20,4 @@ import { ResetPasswordComponent } from './forgot-password/reset-password.compone
     ResetPasswordComponent
   ]
 })
-export class AuthModule { }
+export class PagesModule { }

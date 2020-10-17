@@ -1,14 +1,26 @@
 <div class="row">
   <div class="col-md6 offset-md3 mt-4 mx-5">
     <h3>Login</h3>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="loginUsername">Username</label>
-        <input type="text" class="form-control" id="loginUsername" placeholder="Enter username" required>
+        <div class="form-group">
+          <label for="registerUsername">Username</label>
+          <input type="text" formControlName="username" class="form-control" id="loginUsername"
+            placeholder="Enter Username" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.username.errors }">
+          <div *ngIf="submitted && loginForm.controls.username.errors" class="invalid-feedback">
+            <div *ngIf="loginForm.controls.username.errors.required">Username is required</div>
+            <div *ngIf="loginForm.controls.username.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label for="loginPassword">Password</label>
-        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+        <input type="password" formControlName="password" class="form-control" id="loginPassword"
+          placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors}" />
+        <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
+          <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+          <div *ngIf="loginForm.controls.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
       </div>
       <div class="form-group">
         <a [routerLink]="['/reset-password']" routerLinkActive="active">Forgot Password</a>
